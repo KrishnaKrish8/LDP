@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <style>
+       body {
+  /*background-image: linear-gradient(109.6deg, rgba(156, 252, 248, 1) 11.2%, rgba(110, 123, 251, 1) 91.1%);*/
+  background-repeat: no-repeat;
+  background-image: url("https://media.istockphoto.com/id/1446229465/photo/red-heart-and-stethoscope-are-on-blue-background.jpg?b=1&s=170667a&w=0&k=20&c=1-aE7XV24f8qVr8fGnpvypir8fSxYaM9sHZurKoutj8=");
+  background-size: cover;
+  margin: 50px 100px 100px;
+  height: 670px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+b{
+    color: rgb(109, 7, 7);
+    font-size: 30px;
+}
+hr{
+    border-color: rgb(109, 7, 7);
+}
+.content{
+    /*margin-left: 20%;*/
+    margin-bottom: 5%;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-align:center;
+    color:red;
+}
+    </style>
+</head>
+<body >
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <div id="predict_content" class="content">
+           {{ predict_content }}
+        </div>
+        <i><b>Recommendations</b></i><hr></br></br>
+        <div style="font-size:25px;color:white;"class="recommendation">
+            {% for para in recommend %}
+                <li><p> {{para}} </p></li>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

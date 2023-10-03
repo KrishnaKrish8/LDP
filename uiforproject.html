@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liver Disease Prediction</title>
+	<style>
+		input[type=text], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		input[type=submit] {
+			width: 100%;
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+
+		div {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>Liver Disease Prediction</h2>
+	<div>
+		<label for="age">Age:</label>
+		<input type="text" id="age" name="age" placeholder="Enter your age">
+
+		<label for="total_bilirubin">Total Bilirubin:</label>
+		<input type="text" id="total_bilirubin" name="total_bilirubin" placeholder="Enter total bilirubin">
+
+		<label for="direct_bilirubin">Direct Bilirubin:</label>
+		<input type="text" id="direct_bilirubin" name="direct_bilirubin" placeholder="Enter direct bilirubin">
+
+		<label for="alk_phos">Alkaline Phosphatase:</label>
+		<input type="text" id="alk_phos" name="alk_phos" placeholder="Enter alkaline phosphatase">
+
+		<label for="alamine_aminotransferase">Alamine Aminotransferase:</label>
+		<input type="text" id="alamine_aminotransferase" name="alamine_aminotransferase" placeholder="Enter alamine aminotransferase">
+
+		<label for="aspartate_aminotransferase">Aspartate Aminotransferase:</label>
+		<input type="text" id="aspartate_aminotransferase" name="aspartate_aminotransferase" placeholder="Enter aspartate aminotransferase">
+
+		<label for="total_protein">Total Protein:</label>
+		<input type="text" id="total_protein" name="total_protein" placeholder="Enter total protein">
+
+		<label for="albumin">Albumin:</label>
+		<input type="text" id="albumin" name="albumin" placeholder="Enter albumin">
+
+		<label for="albumin_and_globulin_ratio">Albumin and Globulin Ratio
+:</label>
+<input type="text" id="albumin_and_globulin_ratio" name="albumin_and_globulin_ratio" placeholder="Enter albumin and globulin ratio">
+	<input type="submit" value="Predict" onclick="predictLiverDisease()">
+</div>
+
+<div id="result" style="display:none;">
+	<h3>Result:</h3>
+	<p id="prediction"></p>
+</div>
+
+<script>
+	function predictLiverDisease() {
+		// Get the input values
+		var age = document.getElementById("age").value;
+		var total_bilirubin = document.getElementById("total_bilirubin").value;
+		var direct_bilirubin = document.getElementById("direct_bilirubin").value;
+		var alk_phos = document.getElementById("alk_phos").value;
+		var alamine_aminotransferase = document.getElementById("alamine_aminotransferase").value;
+		var aspartate_aminotransferase = document.getElementById("aspartate_aminotransferase").value;
+		var total_protein = document.getElementById("total_protein").value;
+		var albumin = document.getElementById("albumin").value;
+		var albumin_and_globulin_ratio = document.getElementById("albumin_and_globulin_ratio").value;
+
+		// Make the AJAX call to the Flask API
+		var xhr = new XMLHttpRequest();
+		var url = "https://<your-flask-api-url>/predict";
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				var result = JSON.parse(xhr.responseText);
+				document.getElementById("prediction").innerHTML = result.prediction;
+				document.getElementById("result").style.display = "block";
+			}
+		};
+		var data = JSON.stringify({
+			"age": age,
+			"total_bilirubin": total_bilirubin,
+			"direct_bilirubin": direct_bilirubin,
+			"alk_phos": alk_phos,
+			"alamine_aminotransferase": alamine_aminotransferase,
+			"aspartate_aminotransferase": aspartate_aminotransferase,
+			"total_protein": total_protein,
+			"albumin": albumin,
+			"albumin_and_globulin_ratio": albumin_and_globulin_ratio
+		});
+		xhr.send(data);
+	}
+</script>
+</body>
+</html>

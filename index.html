@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Liver Disease Prediction</title>
+  <style>
+    body{
+        background-image: url("https://tse4.mm.bing.net/th?id=OIP.LOMGB8T9QWttLz_ZxveRWAHaE-&pid=Api&P=0");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(4, 2, 54);
+        color: rgb(21, 21, 21);
+        align-items: center;
+        margin: 0 10% 0 30%;
+    }
+    input{
+        margin: 10px;
+        width: 60%;
+        height: 17px;
+        font-size: 10px;
+    }
+    .login{background-color: aliceblue;
+        width: 50%;
+        padding-left: 15%;
+    align-items: center;
+    border-radius: 10px;
+}
+h1{
+    font-style: inherit;
+    color: rgb(39, 38, 38);
+    
+}
+header{
+    width: 100%;
+    height: fit-content;
+   
+    color: antiquewhite;
+    margin-left: -50%;
+    margin-right: -50%;
+    font-style: arial;
+    font-size: xx-large;
+    padding-left: 10%;
+}
+.btn{
+    background-color: #6182f9;
+  border-radius: 100px;
+  box-shadow: rgba(46, 44, 187, 0.2) 0 -25px 18px -14px inset,rgba(63, 44, 187, 0.15) 0 1px 2px,rgba(89, 44, 187, 0.15) 0 2px 4px,rgba(44, 56, 187, 0.15) 0 4px 8px,rgba(63, 44, 187, 0.15) 0 8px 16px,rgba(19, 3, 93, 0.15) 0 16px 32px;
+  color: rgb(0, 3, 8);
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 20%;
+}
+btn:hover{
+    box-shadow: rgba(58, 44, 187, 0.35) 0 -25px 18px -14px inset,rgba(70, 44, 187, 0.25) 0 1px 2px,rgba(5, 16, 138, 0.25) 0 2px 4px,rgba(63, 44, 187, 0.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+header{
+    width: 155%;
+    background-color: black;
+    font-weight: 800;
+    font-variant: initial;
+    
+}
+
+  </style>
+
+</head>
+
+<body>
+    <header><i>LDP</i></header>
+ <div class="login">
+	<h1>Liver Disease Predictor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        
+    	<input type="text" name="Age" placeholder="Age" required="required" /></br>
+        <input type="text" name="Gender" placeholder="Gender" required="required" /></br>
+		<input type="text" name="Total_Bilirubin" placeholder="Total Bilirubin" required="required" /></br>
+		<input type="text" name="Direct_Bilirubin" placeholder="Direct Bilirubin" required="required" /></br>
+        <input type="text" name="Alkaline_Phosphotase" placeholder="Alkaline Phosphotase" required="required" /></br>
+        <input type="text" name="Alamine_Aminotransferase" placeholder="Alamine Aminotransferase" required="required" /></br>
+        <input type="text" name="Asparate_Aminotransferase" placeholder="Asparate Aminotransferase" required="required" /></br>
+        <input type="text" name="Total_proteins" placeholder="Total proteins" required="required" /></br>
+        <input type="text" name="Albumin" placeholder="Albumin" required="required" /></br>
+        <input type="text" name="Albumin_Globulin_Ratio" placeholder="Albumin and Globulin Ratio" required="required" /></br>
+    </br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+
+</div>
+
+
+ </div>
+
+
+</body>
+</html>

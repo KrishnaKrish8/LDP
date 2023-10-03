@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>liver disease prediction</title>
+   <style>
+    body{align-items: center;
+        font-size: medium;
+        background-color: rgb(235, 138, 206);
+    }
+    #bdy{padding: 20px;
+        margin: 0 auto;
+        padding-left: 15%;
+background-color: aliceblue;
+height: fit-content;
+width: 30%;
+    }
+    input,#gender{
+        margin-bottom: 15px;padding: 2px;
+        width: 60%;
+    }
+    button{
+        margin-left: 20%;
+        background-color: rgb(232, 203, 219);
+    }
+    b{
+        font-size: larger;
+    }
+   </style>
+</head>
+<body></br></br>
+  <center><b>LIVER DISEASE PREDICTION</b></center>  </br>
+    <div id="bdy">
+    <form action="{{url_for('predict')}}"method="post">  
+    <input type="text" placeholder="age"/></br>
+    Gender</br></br>
+    
+    <select id="gender" name="gender" aria-placeholder="gender">
+        <option value="Female">Female</option>
+        <option value="canada">Canada</option>
+        
+      </select></br>
+    <input type="text" placeholder="Total_Bilirubin"/></br>
+    <input type="text" placeholder="Direct_Bilirubin"/></br>
+    	<input type="text" placeholder="Alkaline_Phosphotase"/></br>
+    <input type="text" placeholder="Alamine_Aminotransferase"/>	</br>
+    <input type="text" placeholder="Aspartate_Aminotransferase"/></br>
+    	<input type="text" placeholder="Total_Protiens"/></br>
+    <input type="text" placeholder="Albumin"/></br>
+    <input type="text" placeholder="Albumin_and_Globulin_Ratio"/></br>
+    <input type="text" placeholder="Dataset"/></br>
+  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+    <br>
+    <br>
+    {{ prediction_text }}
+</div>
+</body>
+</html>
